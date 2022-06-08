@@ -1,0 +1,15 @@
+
+    len = recv(sockfd, &buf, sizeof(buf), 0);
+    printf("Received: %s\n", buf);
+    memset(buf, '\0', sizeof(buf));
+    fgets(buf, 1024, stdin);
+    send(sockfd, buf, SIZE, 0);
+
+    len = recv(sockfd, &buf, sizeof(buf), 0);
+    printf("Received: %s\n", buf);
+    memset(buf, '\0', sizeof(buf));
+    fgets(buf, 1024, stdin);
+    send(sockfd, buf, SIZE, 0);
+
+        int opt = 1;
+    setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(int));
